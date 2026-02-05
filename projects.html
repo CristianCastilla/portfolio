@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos los Proyectos | Cristian Castilla</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --accent: #c084fc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, #1e1b4b, transparent),
+                radial-gradient(circle at bottom left, #0f172a, transparent);
+            background-attachment: fixed;
+            padding-top: 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(3, 7, 18, 0.5);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .category-title {
+            font-size: 2.2rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--glass-border);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-title::before {
+            content: "";
+            width: 8px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s;
+            padding: 1.5rem;
+        }
+
+        .project-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .badge {
+            background: var(--glass);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .project-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .project-item {
+                grid-template-columns: 1fr;
+            }
+
+            .project-img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo-text">Cristian Castilla</a>
+            <a href="index.html" class="btn btn-outline">Volver al inicio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 style="font-size: 3.5rem; text-align: center; margin-top: 2rem;">Portfolio de Proyectos</h1>
+        <p
+            style="text-align: center; color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 1rem auto;">
+            Una visión detallada de mis habilidades técnicas organizadas por especialidad.
+        </p>
+
+        <!-- SECCIÓN FRONTEND -->
+        <h2 class="category-title">Frontend & Web Apps</h2>
+        <div class="projects-list">
+            <!-- Asesoría Grupo RG -->
+            <div class="project-item">
+                <div class="project-img">
+                    <img src="/assets/grupo-rg.png" alt="Asesoría Grupo RG">
+                </div>
+                <div class="project-info">
+                    <div class="badge">Web Development</div>
+                    <h2>Asesoría Grupo RG</h2>
+                    <p>Plataforma corporativa premium para asesoría fiscal y laboral. Diseño profesional con enfoque en
+                        la experiencia de usuario y conversión.</p>
+                    <div class="links">
+                        <a href="https://cristiancastilla.github.io/Asesoria-Grupo-RG/" target="_blank"
+                            class="btn btn-primary">Ver Web</a>
+                        <a href="https://github.com/CristianCastilla/Asesoria-Grupo-RG" target="_blank"
+                            class="btn btn-outline">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tienda Online Express -->
+            <div class="project-item">
+                <div class="project-img"
+                    style="background: rgba(129, 140, 248, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🛒</span>
+                </div>
+                <div class="project-info">
+                    <div class="badge">Full-Stack / Frontend</div>
+                    <h2>Tienda Online</h2>
+                    <p>Interfaz de e-commerce dinámica con carrito de compras y gestión visual de productos. Construida
+                        con Express.js.</p>
+                    <div class="links">
+                        <a href="https://github.com/CristianCastilla/Expressjs-Tienda-Online" target="_blank"
+                            class="btn btn-primary">Ver GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN BACKEND -->
+        <h2 class="category-title" style="color: var(--secondary); border-color: var(--secondary);">Backend & Core
+            Engineering</h2>
+        <div class="projects-list">
+            <!-- DatabaseConnect Java -->
+            <div class="project-item">
+                <div class="project-img">
+                    <img src="/assets/java-backend.png" alt="DatabaseConnect Java">
+                </div>
+                <div class="project-info">
+                    <div class="badge">Backend / Java Core</div>
+                    <h2>DatabaseConnect (Java Puro)</h2>
+                    <p>Ingeniería de backend para gestión de JDBC sin frameworks. Enfoque en arquitectura, rendimiento y
+                        control total del flujo de datos.</p>
+                    <div class="links">
+                        <a href="https://github.com/CristianCastilla/databaseconnect" target="_blank"
+                            class="btn btn-primary">Ver GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task API -->
+            <div class="project-item">
+                <div class="project-img"
+                    style="background: rgba(192, 132, 252, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">📝</span>
+                </div>
+                <div class="project-info">
+                    <div class="badge">API Development</div>
+                    <h2>Task API</h2>
+                    <p>Servicio RESTful robusto para gestión de tareas. Arquitectura limpia y validación de datos
+                        profesional.</p>
+                    <div class="links">
+                        <a href="https://github.com/CristianCastilla/Task-api" target="_blank"
+                            class="btn btn-primary">Ver GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculator API -->
+            <div class="project-item">
+                <div class="project-img"
+                    style="background: rgba(148, 163, 184, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🔢</span>
+                </div>
+                <div class="project-info">
+                    <div class="badge">Microservices</div>
+                    <h2>Calculator API</h2>
+                    <p>API centrada en la lógica computacional para procesar operaciones matemáticas de forma segregada
+                        y eficiente.</p>
+                    <div class="links">
+                        <a href="https://github.com/CristianCastilla/calculator-api" target="_blank"
+                            class="btn btn-primary">Ver GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habits Completions -->
+            <div class="project-item">
+                <div class="project-img"
+                    style="background: rgba(56, 189, 248, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">✅</span>
+                </div>
+                <div class="project-info">
+                    <div class="badge">Logic & Data</div>
+                    <h2>Habits Completions</h2>
+                    <p>Lógica de persistencia y seguimiento de estados para una aplicación de control de hábitos y
+                        productividad.</p>
+                    <div class="links">
+                        <a href="https://github.com/CristianCastilla/Habits-Completions" target="_blank"
+                            class="btn btn-primary">Ver GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN REDES -->
+        <h2 class="category-title" style="color: var(--accent); border-color: var(--accent);">Redes, SysOps &
+            Infraestructura</h2>
+        <div class="projects-list" style="margin-bottom: 8rem;">
+            <!-- SysOps -->
+            <div class="project-item">
+                <div class="project-img"
+                    style="background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 4rem;">🐳</span>
+                </div>
+                <div class="project-info">
+                    <div class="badge">Networks / SysOps</div>
+                    <h2>Infraestructura Automatizada</h2>
+                    <p>Implementación de contenedores, pipelines de despliegue continuo y gestión de redes virtuales
+                        para alta disponibilidad.</p>
+                    <div class="links">
+                        <span class="btn btn-outline">En desarrollo / Laboratorio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer
+        style="text-align: center; padding: 4rem 0; border-top: 1px solid var(--glass-border); background: rgba(3, 7, 18, 0.8);">
+        <p style="color: var(--text-muted);">&copy; 2026 Cristian Castilla. Especialista en Soluciones Tecnológicas de
+            Extremo a Extremo.</p>
+    </footer>
+</body>
+
+</html>
